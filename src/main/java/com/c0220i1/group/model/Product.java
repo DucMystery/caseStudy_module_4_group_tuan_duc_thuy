@@ -14,7 +14,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long product_id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -34,7 +34,7 @@ public class Product {
     private Long like;
 
     @Min(0)
-    private Long evaluate;
+    private double evaluate;
 
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "product_category",
