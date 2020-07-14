@@ -1,6 +1,5 @@
 package com.c0220i1.group.controller;
 
-import com.c0220i1.group.model.Category;
 import com.c0220i1.group.model.Product;
 import com.c0220i1.group.service.products.CategoryService;
 import com.c0220i1.group.service.products.ProductService;

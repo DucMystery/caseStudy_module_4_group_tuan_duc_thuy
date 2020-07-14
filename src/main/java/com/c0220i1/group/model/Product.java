@@ -1,6 +1,8 @@
 package com.c0220i1.group.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -9,7 +11,8 @@ import java.util.Set;
 
 @Entity
 @Table
-@Data
+@Getter
+@Setter
 public class Product {
 
     @Id
@@ -30,8 +33,6 @@ public class Product {
     @Column(nullable = false)
     private String image;
 
-    @Min(0)
-    private Long like;
 
     @Min(0)
     private double evaluate;
