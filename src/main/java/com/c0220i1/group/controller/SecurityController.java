@@ -34,9 +34,5 @@ public class SecurityController {
         return "UserRegisterSuccess";
     }
 
-    @GetMapping("/admin")
-    public String adminPage(){
-        return "adminView";
-    }
 }
 
