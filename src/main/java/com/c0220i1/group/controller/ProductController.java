@@ -35,4 +35,9 @@ public class ProductController {
         model.addAttribute("products",products);
         return "viewAdmin";
     }
+
+    @GetMapping("/login")
+    public String showLogin(){
+        return "login";
+    }
 }
