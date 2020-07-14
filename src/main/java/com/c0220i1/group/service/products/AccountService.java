@@ -13,5 +13,6 @@ public interface AccountService extends UserDetailsService {
     Optional<Account> findById(Long id);
     void save(Account account);
     void remove(Long id);
+    Account findByName(String username);
 
 }

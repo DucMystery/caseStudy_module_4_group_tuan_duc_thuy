@@ -32,17 +32,11 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/home", "/register", "/products/**").permitAll()
+                .antMatchers("/", "/category/**", "/register/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/products/**").hasRole("USER")
                 .anyRequest().authenticated()
-                .and()
-                .formLogin()
-//                .defaultSuccessUrl("/hello")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+                .and().formLogin().permitAll().and().csrf().disable().cors()
+                .and().logout().permitAll()
+                ;
     }
-
 }
