@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 public interface AccountService extends UserDetailsService {
 
     Iterable<Account> findAll();

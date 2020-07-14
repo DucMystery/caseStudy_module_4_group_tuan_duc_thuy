@@ -6,16 +6,16 @@
 </head>
 <body>
 <form action="#" th:action="@{/register}"
-      th:object="${user}" method="POST" novalidate="novalidate">
+      th:object="${account}" method="POST" novalidate="novalidate">
     <table>
         <tr>
-            <td><input type="text" th:field="${user.id}"/>id</td>
+            <td><input type="text" th:field="${account.id}"/>id</td>
         </tr>
         <tr>
-            <td><input type="text" th:field="${user.username}"/>name</td>
+            <td><input type="text" th:field="${account.username}"/>name</td>
         </tr>
         <tr>
-            <td><input type="text" th:field="${user.password}"/>password</td>
+            <td><input type="text" th:field="${account.password}"/>password</td>
         </tr>
     </table>
     <button type="submit" >SAVE</button>
