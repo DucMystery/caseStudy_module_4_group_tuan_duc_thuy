@@ -1,6 +1,8 @@
 package com.c0220i1.group.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,7 +10,8 @@ import java.util.Set;
 
 @Entity
 @Table
-@Data
+@Getter
+@Setter
 public class Category {
 
     @Id
