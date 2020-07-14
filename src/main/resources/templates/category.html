@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Category</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Little Closet template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap-4.1.2/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
@@ -165,20 +165,21 @@
                 <div class="row products_row products_container grid">
 
                     <!-- Product -->
+                    <th:block th:each="product:${products}">
                     <div class="col-xl-4 col-md-6 grid-item new">
                         <div class="product">
-                            <div class="product_image"><img src="images/product_1.jpg" alt=""></div>
+                            <div class="product_image"><img th:src="'images/'+${product.image}" alt=""></div>
                             <div class="product_content">
                                 <div class="product_info d-flex flex-row align-items-start justify-content-start">
                                     <div>
                                         <div>
-                                            <div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+                                            <div class="product_name"><a href="product.html"><span th:text="${product.name}"></span></a></div>
                                             <div class="product_category">In <a href="category.html">Category</a></div>
                                         </div>
                                     </div>
                                     <div class="ml-auto text-right">
                                         <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$3<span>.99</span></div>
+                                        <div class="product_price text-right">$<span th:text="${product.price}"></span></div>
                                     </div>
                                 </div>
                                 <div class="product_buttons">
@@ -194,254 +195,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item hot">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_2.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">Hype Grey Shirt</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$4<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item sale">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_3.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">Long Sleeve Jacket</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$13<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item sale">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_4.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">Denim Men Shirt</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$5<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item hot">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_5.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">Long Red Shirt</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$7<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item new">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_6.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">Short Sleeve Shirt</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$12<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item sale">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_7.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">Red Stripped Dress</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$6<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item new">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_8.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">White Cotton Shirt</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$21<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="col-xl-4 col-md-6 grid-item sale">
-                        <div class="product">
-                            <div class="product_image"><img src="images/product_9.jpg" alt=""></div>
-                            <div class="product_content">
-                                <div class="product_info d-flex flex-row align-items-start justify-content-start">
-                                    <div>
-                                        <div>
-                                            <div class="product_name"><a href="product.html">Black Short Sleeve Dress</a></div>
-                                            <div class="product_category">In <a href="category.html">Category</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="ml-auto text-right">
-                                        <div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="product_price text-right">$7<span>.99</span></div>
-                                    </div>
-                                </div>
-                                <div class="product_buttons">
-                                    <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                        <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                            <div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </th:block>
 
                 </div>
                 <div class="row page_nav_row">

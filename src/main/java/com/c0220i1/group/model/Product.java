@@ -33,7 +33,6 @@ public class Product {
     @Column(nullable = false)
     private String image;
 
-
     @Min(0)
     private double evaluate;
 
