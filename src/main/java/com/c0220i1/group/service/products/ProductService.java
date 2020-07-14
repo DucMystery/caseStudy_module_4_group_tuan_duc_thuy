@@ -13,4 +13,5 @@ public interface ProductService {
     Optional<Product> findById(Long id);
     void save(Product product);
     void remove(Long id);
+    Page<Product> findAllByNameContaining(String name,Pageable pageable);
 }
