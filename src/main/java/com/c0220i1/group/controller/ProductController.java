@@ -22,18 +22,4 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
-
-    @GetMapping("/products")
-    public ModelAndView showHome(@RequestParam("s")Optional<String> s, @PageableDefault(size = 12)Pageable pageable){
-        Page<Product> products;
-        if (s.isPresent()){
-            products = productService.findAllByNameContaining(s.get(),pageable);
-        }else {
-            products =productService.findAll(pageable);
-        }
-        ModelAndView  modelAndView = new ModelAndView("view");
-        modelAndView.addObject("products",products);
-        return modelAndView;
-
-    }
 }
