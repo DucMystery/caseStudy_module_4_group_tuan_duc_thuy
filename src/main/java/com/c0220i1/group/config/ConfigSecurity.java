@@ -35,8 +35,8 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/category/**", "/register/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                .and().formLogin().permitAll().and().csrf().disable().cors()
-                .and().logout().permitAll()
-                ;
+                .and().formLogin().permitAll()
+                .and().csrf().disable().cors()
+                .and().logout().permitAll();
     }
 }

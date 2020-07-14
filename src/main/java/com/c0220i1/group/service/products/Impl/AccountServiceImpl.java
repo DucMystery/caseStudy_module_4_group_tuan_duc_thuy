@@ -12,10 +12,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -26,17 +25,20 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByUsername(username);
-        List<GrantedAuthority> authorities = account.getRoles().stream().map(role ->
-                new SimpleGrantedAuthority(role.getName())
-        ).collect(Collectors.toList());
+        if (account == null)
+            throw new UsernameNotFoundException("username " + username
+                    + " not found");
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        Role role = account.getRole();
+        grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+
         UserDetails userDetails = new User(
                 account.getUsername(),
                 account.getPassword(),
-                authorities
+                grantedAuthorities
         );
         return userDetails;
     }
-
 
     @Override
     public Iterable<Account> findAll() {
@@ -55,7 +57,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void remove(Long id) {
-
     }
 
     @Override
@@ -64,3 +65,17 @@ public class AccountServiceImpl implements AccountService {
         return account;
     }
 }
+
+
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Account account = accountRepository.findByUsername(username);
+//        List<GrantedAuthority> authorities = account.getRoles().stream().map(role ->
+//                new SimpleGrantedAuthority(role.getName())
+//        ).collect(Collectors.toList());
+//        UserDetails userDetails = new User(
+//                account.getUsername(),
+//                account.getPassword(),
+//                authorities
+//        );
+//        return userDetails;
+//    }

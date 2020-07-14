@@ -1,12 +1,14 @@
 package com.c0220i1.group.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
 @Entity
+@Data
 public class Account {
 
     @Id
@@ -19,11 +21,6 @@ public class Account {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")})
-    private List< Role > roles;
-
+    @ManyToOne
+    private Role role;
 }

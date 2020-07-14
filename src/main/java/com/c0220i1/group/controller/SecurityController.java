@@ -38,14 +38,11 @@ public class SecurityController {
     public ModelAndView PostRegisterPage(@ModelAttribute(value = "account") Account account){
         ModelAndView mv = new ModelAndView("UserRegisterSuccess");
         String password = passwordEncoder.encode(account.getPassword());
-
         Role role = new Role();
         role.setName("ROLE_USER");
         roleService.save(role);
-
         account.setPassword(password);
         accountService.save(account);
-
         return mv;
     }
 

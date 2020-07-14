@@ -36,8 +36,4 @@ public class ProductController {
         return "viewAdmin";
     }
 
-    @GetMapping("/login")
-    public String showLogin(){
-        return "login";
-    }
 }
