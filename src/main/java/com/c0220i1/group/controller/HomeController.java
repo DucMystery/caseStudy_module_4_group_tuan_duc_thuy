@@ -31,7 +31,7 @@ public class HomeController {
     private CategoryService categoryService;
 
     @GetMapping("/")
-    public String viewPage(@RequestParam("s")Optional<String>s, @PageableDefault(size = 6) Pageable pageable, Model model){
+    public String viewPage(@RequestParam("s")Optional<String>s, @PageableDefault(size = 9) Pageable pageable, Model model){
         Page<Product> products;
         if (s.isPresent()){
             products =productService.findAllByNameContaining(s.get(),pageable);
@@ -43,12 +43,13 @@ public class HomeController {
     }
 
     @GetMapping("/category/{id}")
-    public ModelAndView showProductsByCate(@PathVariable String id,@PageableDefault(size = 6)Pageable pageable){
+    public ModelAndView showProductsByCate(@PathVariable String id,@PageableDefault(size = 9)Pageable pageable){
         Long cateId = Long.parseLong(id);
         Category category = categoryService.findById(cateId).orElse(null);
         Page<Product> products =productService.findAllByCategorySetEquals(category,pageable);
-        ModelAndView modelAndView = new ModelAndView("view");
+        ModelAndView modelAndView = new ModelAndView("category");
         modelAndView.addObject("products",products);
+        modelAndView.addObject("id",id);
 
         return modelAndView;
 
