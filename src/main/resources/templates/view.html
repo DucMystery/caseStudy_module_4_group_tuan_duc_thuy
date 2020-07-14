@@ -23,7 +23,7 @@
     <!-- Search -->
     <div class="menu_search">
         <form th:action="@{/}" id="menu_search_form" class="menu_search_form">
-            <input type="text" class="search_input" placeholder="Search Item" required="required" th:name="s">
+            <input type="text" class="search_input" placeholder="Search Item" required="required" name="s">
             <input type="submit" class="menu_search_button"><img src="../images/search.png" alt=""></input>
         </form>
     </div>
@@ -84,8 +84,8 @@
             <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
                 <!-- Search -->
                 <div class="header_search">
-                    <form action="#" id="header_search_form">
-                        <input type="text" class="search_input" placeholder="Search Item" required="required">
+                    <form  id="header_search_form">
+                        <input type="text" class="search_input" placeholder="Search Item" required="required" name="s">
                         <button class="header_search_button"><img src="../images/search.png" alt=""></button>
                     </form>
                 </div>

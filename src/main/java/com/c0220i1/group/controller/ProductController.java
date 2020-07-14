@@ -1,6 +1,5 @@
 package com.c0220i1.group.controller;
 
-import com.c0220i1.group.model.Category;
 import com.c0220i1.group.model.Product;
 import com.c0220i1.group.service.products.CategoryService;
 import com.c0220i1.group.service.products.ProductService;
@@ -11,6 +10,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,8 +37,21 @@ public class ProductController {
         return "viewAdmin";
     }
 
-    @GetMapping("/login")
-    public String showLogin(){
-        return "login";
+    @GetMapping("/create-product")
+    public ModelAndView showCreateForm(){
+        ModelAndView modelAndView = new ModelAndView("/create");
+        modelAndView.addObject("categories",categoryService.findAll());
+        modelAndView.addObject("product",new Product());
+        return modelAndView;
+    }
+
+    @PostMapping("/create-product")
+    public ModelAndView addProduct(@ModelAttribute("product")Product product){
+        productService.save(product);
+        ModelAndView modelAndView = new ModelAndView("/create");
+        modelAndView.addObject("product",new Product());
+        modelAndView.addObject("categories",categoryService.findAll());
+        modelAndView.addObject("message","Thêm Thành Công !");
+        return modelAndView;
     }
 }
