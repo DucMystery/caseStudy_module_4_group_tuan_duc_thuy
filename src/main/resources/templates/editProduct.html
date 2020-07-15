@@ -190,7 +190,7 @@
                                     </tr>
                                     <tr>
                                         <td>Image  :</td>
-                                        <td><input type="number" th:field="*{image}"></td>
+                                        <td><input type="text" th:field="*{image}"></td>
                                     </tr>
                                     <tr>
                                         <td>Evaluate :</td>
@@ -198,21 +198,8 @@
                                     </tr>
                                     <tr>
                                         <td>Category :</td>
-                                        <td>
-                                            <div class="multiselect">
-                                                <div class="selectBox" onclick="showCheckboxes()">
-                                                    <select>
-                                                        <option>Select an option</option>
-                                                    </select>
-                                                    <div class="overSelect"></div>
-                                                </div>
-                                                <div id="checkboxes" th:field="*{categorySet}">
-                                                    <th:block th:each="c:${categories}">
-                                                        <label>
-                                                            <input type="checkbox" th:value="${c.id}" th:text="${c.name}"/></label>
-                                                    </th:block>
-                                                </div>
-                                            </div>
+                                        <td th:each="c:${categories}" th:field="*{categorySet}">
+                                            <input type="checkbox" th:text="${c.name}" th:value="${c.id}" >
                                         </td>
                                     </tr>
                                     <tr>
@@ -327,21 +314,6 @@
     </div>
 
 </div>
-
-<script>
-    var expanded = false;
-
-    function showCheckboxes() {
-        var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-        } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-        }
-    }
-</script>
 
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../styles/bootstrap-4.1.2/popper.js"></script>

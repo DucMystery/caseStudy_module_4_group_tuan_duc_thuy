@@ -1,8 +1,10 @@
 package com.c0220i1.group.controller;
 
 
+import com.c0220i1.group.model.Account;
 import com.c0220i1.group.model.Category;
 import com.c0220i1.group.model.Product;
+import com.c0220i1.group.service.products.AccountService;
 import com.c0220i1.group.service.products.CategoryService;
 import com.c0220i1.group.service.products.ProductService;
 import lombok.Getter;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -30,9 +33,19 @@ public class CustomerController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping("/")
-    public String viewPage(@RequestParam("s")Optional<String>s, @PageableDefault(size = 9) Pageable pageable, Model model){
+    public String viewPage(@RequestParam("s")Optional<String>s, @PageableDefault(size = 9) Pageable pageable, Model model, Principal principal){
         Page<Product> products;
+        if(principal!= null){
+            Account account = accountService.findByName(principal.getName());
+            model.addAttribute("account", account);
+        }else {
+            Account account = new Account();
+            model.addAttribute("account",account);
+        }
         if (s.isPresent()){
             products =productService.findAllByNameContaining(s.get(),pageable);
         }else {
