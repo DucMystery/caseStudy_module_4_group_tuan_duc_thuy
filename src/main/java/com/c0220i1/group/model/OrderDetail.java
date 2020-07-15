@@ -14,4 +14,10 @@ import javax.persistence.*;
     private double amount;
     @ManyToOne
     private Product product;
+
+  public OrderDetail(Product product,int quantity,double amount) {
+    this.product= product;
+    this.quantity=quantity;
+    this.amount=amount;
+  }
 }

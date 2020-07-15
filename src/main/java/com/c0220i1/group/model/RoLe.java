@@ -8,14 +8,13 @@ import java.util.List;
 
 @Entity
 @Data
-public class RoLe {
+public class RoLe implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "role")
-    private List<Account> accounts;
-
+//    @OneToMany(mappedBy = "role")
+//    private List<Account> accounts;
     @Override
     public String getAuthority() {
         return this.name;
