@@ -51,14 +51,6 @@ public class AdminController {
         modelAndView.addObject("message","Thêm Thành Công !");
         return modelAndView;
     }
-//    @PostMapping("/create-product")
-//    public ModelAndView addProduct(@ModelAttribute("product")Product product, @RequestParam(name = "categoryId") Long[] categoryId){
-//        ModelAndView modelAndView = new ModelAndView("/create");
-//        modelAndView.addObject("product",new Product());
-//        modelAndView.addObject("categories",categoryService.findAll());
-//        modelAndView.addObject("message","Thêm Thành Công !");
-//        return modelAndView;
-//    }
 
     @GetMapping("/showList")
     public String showList(@RequestParam("s")Optional<String>s, @PageableDefault(size = 20) Pageable pageable, Model model){
