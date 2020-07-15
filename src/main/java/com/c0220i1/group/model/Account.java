@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Entity
 @Data
 public class Account {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
