@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @Controller
-public class ProductController {
+public class AdminController {
 
     @Autowired
     private ProductService productService;
