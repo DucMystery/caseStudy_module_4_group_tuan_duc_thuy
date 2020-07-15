@@ -18,4 +18,5 @@ import java.util.List;
   private Account account;
   @OneToMany
   List<OrderDetail> details;
+
 }

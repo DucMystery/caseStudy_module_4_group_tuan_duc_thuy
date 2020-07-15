@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.management.relation.Role;
+
 @Controller
 public class SecurityController {
 
@@ -35,9 +37,17 @@ public class SecurityController {
     public ModelAndView PostRegisterPage(@ModelAttribute(value = "account") Account account){
         ModelAndView mv = new ModelAndView("view");
         String password = passwordEncoder.encode(account.getPassword());
-        RoLe role = new RoLe();
-        role.setName("ROLE_USER");
-        roleService.save(role);
+        String setRole = "";
+        if (account.getUsername().equalsIgnoreCase("tuan")
+            || account.getUsername().equalsIgnoreCase("thuy")
+                || account.getUsername().equalsIgnoreCase("duc")
+        ){
+            setRole="ROLE_ADMIN";
+        } else {
+            setRole="ROLE_USER";
+        }
+
+        RoLe role = roleService.findByName(setRole);
         account.setPassword(password);
         account.setRole(role);
         accountService.save(account);

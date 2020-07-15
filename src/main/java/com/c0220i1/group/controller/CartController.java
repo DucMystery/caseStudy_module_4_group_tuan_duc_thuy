@@ -1,27 +1,36 @@
 package com.c0220i1.group.controller;
 
-import com.c0220i1.group.model.CartLine;
-import com.c0220i1.group.model.Product;
+import com.c0220i1.group.model.*;
+import com.c0220i1.group.service.products.AccountService;
+import com.c0220i1.group.service.products.OrderDetailService;
+import com.c0220i1.group.service.products.OrderService;
 import com.c0220i1.group.service.products.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.Set;
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
+import java.util.*;
 
 @Controller
 @SessionAttributes("mycart")
   public class CartController {
-
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private OrderDetailService orderDetailService;
+    @Autowired
+    private AccountService accountService;
+    @Autowired
+    private HttpSession session;
     @ModelAttribute("mycart")
         public HashMap<Long, CartLine> showMyCart(){
             return new HashMap<>();
     }
-    @Autowired
-    private ProductService productService;
-
 
 
     @GetMapping("/mycart")
@@ -93,7 +102,27 @@ import java.util.Set;
         modelAndView.addObject("mycart",mycart);
         return modelAndView;
     }
+    @GetMapping("/payment")
+    public ModelAndView showPaymentPage(Principal principal){
+        List<OrderDetail> orderDetails= new ArrayList<>();
+        HashMap<Long,CartLine> mycart= (HashMap<Long, CartLine>) session.getAttribute("mycart");
+       Set<Long> keys= mycart.keySet();
+       for(Long key:keys){
+           OrderDetail orderDetail= new OrderDetail(mycart.get(key).getProduct(),
+                   mycart.get(key).getQuantity(),mycart.get(key).getAmount());
+           orderDetails.add(orderDetail);
+       }
+       String username=principal.getName();
+        Account account = accountService.findByName(username);
+        Orders order = new Orders();
+       order.setDetails(orderDetails);
+       order.setAccount(account);
+       order.setDateOrder(new Date());
+       ModelAndView modelAndView = new ModelAndView("payment");
+       modelAndView.addObject("order",order);
+       return modelAndView;
 
+    }
 
     }
 
