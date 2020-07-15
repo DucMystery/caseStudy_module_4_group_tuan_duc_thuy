@@ -9,9 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
-@Getter
-@Setter
+@Data
 public class Category {
 
     @Id
