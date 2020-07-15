@@ -73,16 +73,15 @@
             <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
             <nav class="main_nav">
                 <ul class="d-flex flex-row align-items-start justify-content-start">
-                    <li class="active"><a href="#">Tạo Mới Sản Phẩm</a></li>
-                    <li><a href="#" >Sửa Thông Tin Sản Phẩm</a></li>
-                    <li><a href="#">Xóa Sản Phẩm</a></li>
+                    <li><a th:href="@{/create-product}">Tạo Mới Sản Phẩm</a></li>
+                    <li class="active"><a th:href="@{/showList}" >Sửa Hoặc Xóa Thông Tin Sản Phẩm</a></li>
                 </ul>
             </nav>
             <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
                 <!-- Search -->
                 <div class="header_search">
-                    <form action="#" id="header_search_form">
-                        <input type="text" class="search_input" placeholder="Search Item" required="required">
+                    <form id="header_search_form">
+                        <input type="text" class="search_input" placeholder="Search Item" required="required" name="s">
                         <button class="header_search_button"><img src="../images/search.png" alt=""></button>
                     </form>
                 </div>
@@ -163,6 +162,11 @@
                     </th:block>
                 </div>
                 <div class="row load_more_row">
+                    <div>
+                        <a th:href="@{'/admin'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Previous</a>
+                        <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
+                        <a th:href="@{'/admin'(page=${products.number + 1})}" th:if="${products.hasNext()}">Next</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,7 +182,7 @@
                         <div class="col-lg-4 footer_col">
                             <div class="footer_about">
                                 <div class="footer_logo">
-                                    <a href="#">
+                                    <a href="/admin">
                                         <div class="d-flex flex-row align-items-center justify-content-start">
                                             <div class="footer_logo_icon"><img src="../images/logo_2.png" alt=""></div>
                                             <div>Little Closet</div>
