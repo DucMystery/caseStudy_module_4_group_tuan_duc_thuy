@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Controller
-public class HomeController {
+public class CustomerController {
 
     @Autowired
     private ProductService productService;

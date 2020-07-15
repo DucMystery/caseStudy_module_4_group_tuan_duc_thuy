@@ -20,6 +20,9 @@ public class Role implements GrantedAuthority {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private List<Account> accounts;
+
     @Override
     public String getAuthority() {
         return this.name;
