@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class RoLe implements GrantedAuthority {
+public class RoLe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
