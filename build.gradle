@@ -16,6 +16,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -36,4 +37,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR"
+    }
+    afterTest { desc, result ->
+        println "Testing ${desc.name} [${desc.className}]: ${result.resultType}"
+    }
+    reports {
+        html.enabled = true
+    }
 }
