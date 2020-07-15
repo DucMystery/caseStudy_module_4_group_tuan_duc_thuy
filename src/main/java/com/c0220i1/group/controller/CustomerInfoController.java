@@ -39,7 +39,7 @@ import java.util.Random;
             return new ModelAndView("customerinfo");
         } else {
             String username = (String) httpSession.getAttribute("username");
-            Account account = accountService.findAccountByUsername(username);
+            Account account = accountService.findByName(username);
             customerinfo.setAccount(account);
             customerInfoService.save(customerinfo);
            ModelAndView modelAndView= new ModelAndView("customerinfo");

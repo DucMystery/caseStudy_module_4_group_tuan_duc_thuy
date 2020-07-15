@@ -37,33 +37,4 @@ public class CustomerInfo implements Serializable {
 
     public CustomerInfo() {
     }
-// Su dung trong Spring MVC
-
-//    @Override
-//    public boolean supports(Class<?> clazz) {
-//        return CustomerInfo.class.isAssignableFrom(clazz);
-//    }
-//
-//    @Override
-//    public void validate(Object target, Errors errors) {
-//        CustomerInfo customerInfo = (CustomerInfo) target;
-//        String email= customerInfo.getEmail();
-//        String phone= customerInfo.getPhone();
-//        ValidationUtils.rejectIfEmpty(errors,"phone","phoneNumber.empty");
-//        ValidationUtils.rejectIfEmpty(errors,"email","email.empty");
-//        if(phone.length()>11||phone.length()<10){
-//            errors.rejectValue("phone","phoneNumber.length");
-//        }
-//        if(!phone.startsWith("0")){
-//            errors.rejectValue("phone","phoneNumber.startWith");
-//        }
-//        if(!phone.matches("(^$|[0-9]*$)")){
-//            errors.rejectValue("phone","phoneNumber.matches");
-//        }
-//        if (!email.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$")){
-//            errors.rejectValue("email","email.matches");
-//        }
-
-
-
-    }
+}
