@@ -7,14 +7,17 @@ import javax.persistence.*;
 @Entity
 @Data
 public class Account {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
-    @Column(nullable = false,unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false)
     private String password;
-    @ManyToOne
-    private RoLe roLe;
 
+    @ManyToOne
+    private RoLe role;
 }
