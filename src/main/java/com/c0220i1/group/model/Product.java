@@ -41,5 +41,14 @@ public class Product {
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")})
     private Set<Category> categorySet = new HashSet<>();
+//
+//    public boolean hasCategory(Category category){
+//        for (Category c : getCategorySet()){
+//            if (c.getId()==category.getId()){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 }

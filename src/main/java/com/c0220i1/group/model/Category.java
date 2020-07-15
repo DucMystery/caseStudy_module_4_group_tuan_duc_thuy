@@ -21,7 +21,7 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "product_category",
             joinColumns = {@JoinColumn(name = "category_id")},
             inverseJoinColumns = {@JoinColumn(name = "product_id")})

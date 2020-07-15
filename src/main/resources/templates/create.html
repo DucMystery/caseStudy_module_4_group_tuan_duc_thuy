@@ -179,7 +179,7 @@
                                         </tr>
                                         <tr>
                                             <td>Image  :</td>
-                                            <td><input type="number" th:field="*{image}"></td>
+                                            <td><input type="text" th:field="*{image}"></td>
                                         </tr>
                                         <tr>
                                             <td>Evaluate :</td>
@@ -188,20 +188,25 @@
                                         <tr>
                                             <td>Category :</td>
                                             <td>
-                                                <div class="multiselect">
-                                                    <div class="selectBox" onclick="showCheckboxes()">
-                                                        <select>
-                                                            <option>Select an option</option>
-                                                        </select>
-                                                        <div class="overSelect"></div>
-                                                    </div>
-                                                    <div id="checkboxes" th:field="*{categorySet}">
-                                                        <th:block th:each="c:${categories}">
-                                                        <label>
-                                                            <input type="checkbox" th:value="${c.id}" th:text="${c.name}"/></label>
-                                                        </th:block>
-                                                    </div>
-                                                </div>
+                                                <select th:field="*{categorySet}" multiple >
+                                                    <th:block th:each="c: ${categories}">
+                                                        <option th:text="${c.name}" th:value="${c.id}"></option>
+                                                    </th:block>
+                                                </select>
+<!--                                                <div class="multiselect" name="categoryId">-->
+<!--                                                    <div class="selectBox" onclick="showCheckboxes()">-->
+<!--                                                        <select>-->
+<!--                                                            <option>Select an option</option>-->
+<!--                                                        </select>-->
+<!--                                                        <div class="overSelect"></div>-->
+<!--                                                    </div>-->
+<!--                                                    <div id="checkboxes" th:field="*{categorySet}">-->
+<!--                                                        <th:block th:each="c:${categories}">-->
+<!--                                                        <label>-->
+<!--                                                            <input type="checkbox" th:value="${c.id}" th:text="${c.name}"/></label>-->
+<!--                                                        </th:block>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
                                             </td>
                                         </tr>
                                         <tr>
