@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.Set;
 
 @Controller
@@ -94,8 +93,6 @@ import java.util.Set;
         modelAndView.addObject("mycart",mycart);
         return modelAndView;
     }
-
-
 
 
     }
