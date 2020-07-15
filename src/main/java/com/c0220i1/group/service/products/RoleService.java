@@ -4,4 +4,5 @@ import com.c0220i1.group.model.RoLe;
 
 public interface RoleService {
     void save(RoLe role);
+    RoLe findByName(String name);
 }

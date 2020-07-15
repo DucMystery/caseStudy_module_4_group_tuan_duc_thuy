@@ -250,7 +250,7 @@
                                         <div class="cart_extra_total_value ml-auto" th:text= "${amount}>300? ('$'+${amount}):('$'+(${amount}+10))"></div>
                                     </li>
                                 </ul>
-                                <div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>
+                                <div class="checkout_button trans_200"><a th:href="@{/payment}">proceed to checkout</a></div>
                             </div>
                         </div>
                     </div>

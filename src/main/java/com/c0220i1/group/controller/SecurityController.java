@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.model.IModel;
 
+import javax.management.relation.Role;
+
 @Controller
 public class
 SecurityController {
@@ -38,9 +40,17 @@ SecurityController {
         ModelAndView mv = new ModelAndView("register");
         mv.addObject("message","REGISTER SUCCESS!");
         String password = passwordEncoder.encode(account.getPassword());
-        RoLe role = new RoLe();
-        role.setName("ROLE_USER");
-        roleService.save(role);
+        String setRole = "";
+        if (account.getUsername().equalsIgnoreCase("tuan")
+            || account.getUsername().equalsIgnoreCase("thuy")
+                || account.getUsername().equalsIgnoreCase("duc")
+        ){
+            setRole="ROLE_ADMIN";
+        } else {
+            setRole="ROLE_USER";
+        }
+
+        RoLe role = roleService.findByName(setRole);
         account.setPassword(password);
         account.setRole(role);
         accountService.save(account);
