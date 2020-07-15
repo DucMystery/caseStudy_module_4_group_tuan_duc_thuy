@@ -14,6 +14,8 @@ import java.util.List;
   private Long id;
   private Date dateOrder;
   private double shipFee;
+  private double amount;
+  private boolean paymentsuccess;
   @OneToOne
   private Account account;
   @OneToMany
