@@ -76,7 +76,9 @@
     <!-- Contact Info -->
     <div class="menu_contact">
         <div class="menu_phone d-flex flex-row align-items-center justify-content-start">
-            <div><div><img src="../images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+            <div>
+                <div><img src="../images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div>
+            </div>
             <div>+94 9669 8668</div>
         </div>
         <div class="menu_social">
@@ -109,7 +111,7 @@
             <nav class="main_nav">
                 <ul class="d-flex flex-row align-items-start justify-content-start">
                     <li class="active"><a href="/create-product">Tạo Mới Sản Phẩm</a></li>
-                    <li><a href="/showList" >Sửa Hoặc Xóa Thông Tin Sản Phẩm</a></li>
+                    <li><a href="/showList">Sửa Hoặc Xóa Thông Tin Sản Phẩm</a></li>
                 </ul>
             </nav>
             <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
@@ -121,12 +123,20 @@
                     </form>
                 </div>
                 <!-- User -->
-                <div class="user"><a href="#"><div><img src="../images/user.svg" alt="https://www.flaticon.com/authors/freepik"><div>1</div></div></a></div>
+                <div class="user"><a href="#">
+                    <div><img src="../images/user.svg" alt="https://www.flaticon.com/authors/freepik">
+                        <div>1</div>
+                    </div>
+                </a></div>
                 <!-- Cart -->
-                <div class="cart"><a href="cart.html"><div><img class="svg" src="../images/cart.svg" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+                <div class="cart"><a href="cart.html">
+                    <div><img class="svg" src="../images/cart.svg" alt="https://www.flaticon.com/authors/freepik"></div>
+                </a></div>
                 <!-- Phone -->
                 <div class="header_phone d-flex flex-row align-items-center justify-content-start">
-                    <div><div><img src="../images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+                    <div>
+                        <div><img src="../images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div>
+                    </div>
                     <div>+84 9669 86688</div>
                 </div>
             </div>
@@ -137,11 +147,6 @@
         <div class="super_overlay"></div>
 
 
-
-
-
-
-
         <!-- Products -->
 
         <div class="products">
@@ -149,71 +154,63 @@
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3">
                         <div class="section_title text-center">
-                            Form Create Product</div>
+                            Form Create Product
+                        </div>
                     </div>
                 </div>
                 <div class="row page_nav_row">
                     <div class="col">
                         <div class="page_nav">
                             <ul class="d-flex flex-row align-items-start justify-content-center">
-                                <li class="active"><span th:text="${message}"></span> </li>
+                                <li class="active"><span th:text="${message}"></span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                            <div class="container">
-                                <form th:action="@{/create-product}" method="post" th:object="${product}" class="form-control">
-                                    <table class="table table-bordered table-hover">
-                                        <tr>
-                                            <td>Name :</td>
-                                            <td><input type="text" th:field="*{name}"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Price :</td>
-                                            <td><input type="number" th:field="*{price}"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quantity :</td>
-                                            <td><input type="number" th:field="*{quantity}"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Image  :</td>
-                                            <td><input type="number" th:field="*{image}"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Evaluate :</td>
-                                            <td><input type="number" th:field="*{evaluate}"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Category :</td>
-                                            <td>
-                                                <div class="multiselect">
-                                                    <div class="selectBox" onclick="showCheckboxes()">
-                                                        <select>
-                                                            <option>Select an option</option>
-                                                        </select>
-                                                        <div class="overSelect"></div>
-                                                    </div>
-                                                    <div id="checkboxes" th:field="*{categorySet}">
-                                                        <th:block th:each="c:${categories}">
-                                                        <label>
-                                                            <input type="checkbox" th:value="${c.id}" th:text="${c.name}"/></label>
-                                                        </th:block>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <input type="submit" value="Submit">
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
+                <div class="container">
+                    <form th:action="@{/create-product}" method="post" th:object="${product}" class="form-control">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <td>Name :</td>
+                                <td><input type="text" th:field="*{name}"></td>
+                            </tr>
+                            <tr>
+                                <td>Price :</td>
+                                <td><input type="number" th:field="*{price}"></td>
+                            </tr>
+                            <tr>
+                                <td>Quantity :</td>
+                                <td><input type="number" th:field="*{quantity}"></td>
+                            </tr>
+                            <tr>
+                                <td>Image :</td>
+                                <td><input type="text" th:field="*{image}"></td>
+                            </tr>
+                            <tr>
+                                <td>Evaluate :</td>
+                                <td><input type="number" th:field="*{evaluate}"></td>
+                            </tr>
+                            <tr>
+                                <td>Category :</td>
+                                <td>
+                                    <select th:field="*{categorySet}" multiple >
+                                        <th:block th:each="c: ${categories}">
+                                            <option th:text="${c.name}" th:value="${c.id}"></option>
+                                        </th:block>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" value="Submit">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
 
 
-                        </div>
+                </div>
                 <div class="row load_more_row">
                 </div>
             </div>
@@ -238,7 +235,8 @@
                                     </a>
                                 </div>
                                 <div class="footer_about_text">
-                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Fusce venenatis vel velit vel euismod.</p>
+                                    <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                                        mus. Suspendisse potenti. Fusce venenatis vel velit vel euismod.</p>
                                 </div>
                             </div>
                         </div>
@@ -249,19 +247,33 @@
                                 <div class="footer_title">Support</div>
                                 <ul class="footer_list">
                                     <li>
-                                        <a href="#"><div>Customer Service<div class="footer_tag_1">online now</div></div></a>
+                                        <a href="#">
+                                            <div>Customer Service
+                                                <div class="footer_tag_1">online now</div>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="#"><div>Return Policy</div></a>
+                                        <a href="#">
+                                            <div>Return Policy</div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="#"><div>Size Guide<div class="footer_tag_2">recommended</div></div></a>
+                                        <a href="#">
+                                            <div>Size Guide
+                                                <div class="footer_tag_2">recommended</div>
+                                            </div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="#"><div>Terms and Conditions</div></a>
+                                        <a href="#">
+                                            <div>Terms and Conditions</div>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="#"><div>Contact</div></a>
+                                        <a href="#">
+                                            <div>Contact</div>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -273,7 +285,8 @@
                                 <div class="footer_title">Stay in Touch</div>
                                 <div class="newsletter">
                                     <form action="#" id="newsletter_form" class="newsletter_form">
-                                        <input type="email" class="newsletter_input" placeholder="Subscribe to our Newsletter" required="required">
+                                        <input type="email" class="newsletter_input"
+                                               placeholder="Subscribe to our Newsletter" required="required">
                                         <button class="newsletter_button">+</button>
                                     </form>
                                 </div>
@@ -296,9 +309,14 @@
                     <div class="row">
                         <div class="col">
                             <div class="footer_bar_content d-flex flex-md-row flex-column align-items-center justify-content-start">
-                                <div class="copyright order-md-1 order-2"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                                <div class="copyright order-md-1 order-2">
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                                    All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                                        aria-hidden="true"></i> by <a
+                                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </div>
                                 <nav class="footer_nav ml-md-auto order-md-2 order-1">
                                     <ul class="d-flex flex-row align-items-center justify-content-start">
                                         <li><a href="category.html">Women</a></li>
@@ -317,21 +335,6 @@
     </div>
 
 </div>
-
-<script>
-    var expanded = false;
-
-    function showCheckboxes() {
-        var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-        } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-        }
-    }
-</script>
 
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../styles/bootstrap-4.1.2/popper.js"></script>

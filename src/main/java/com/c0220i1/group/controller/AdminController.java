@@ -43,7 +43,7 @@ public class AdminController {
     }
 
     @PostMapping("/create-product")
-    public ModelAndView addProduct(@ModelAttribute("product")Product product){
+    public ModelAndView addProduct(@ModelAttribute Product product){
         productService.save(product);
         ModelAndView modelAndView = new ModelAndView("/create");
         modelAndView.addObject("product",new Product());
