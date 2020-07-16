@@ -12,4 +12,6 @@ public interface CategoryService {
     Optional<Category> findById(Long id);
     void save(Category category);
     void remove(Long id);
+
+    Page<Category> findAllByNameContaining(String name, Pageable pageable);
 }
