@@ -15,6 +15,7 @@ public interface ProductService {
     Optional<Product> findById(Long id);
     void save(Product product);
     void remove(Long id);
+    void  remove(Product product);
     Page<Product> findAllByNameContaining(String name,Pageable pageable);
     Page<Product> findAllByCategorySetEquals(Category category,Pageable pageable);
 //    Page<Product> findAllByCategorySet(Set<Category> categories, Pageable pageable);

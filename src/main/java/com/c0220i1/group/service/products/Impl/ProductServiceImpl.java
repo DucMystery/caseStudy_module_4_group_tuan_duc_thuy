@@ -43,6 +43,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void remove(Product product) {
+        productRepository.delete(product);
+    }
+
+    @Override
     public Page<Product> findAllByNameContaining(String name, Pageable pageable) {
         return productRepository.findAllByNameContaining(name,pageable);
     }

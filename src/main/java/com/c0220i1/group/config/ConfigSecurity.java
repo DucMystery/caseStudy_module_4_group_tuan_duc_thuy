@@ -30,12 +30,12 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
+        http.authorizeRequests()
                 .antMatchers("/", "/category/**", "/register/**",
                         "/images/**", "/plugins/**", "/styles/**",
                         "/js/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .and().authorizeRequests().antMatchers("/paymentconfirm").authenticated()
                 .anyRequest().authenticated()
                 .and().formLogin().permitAll()
                 .and().csrf().disable().cors()

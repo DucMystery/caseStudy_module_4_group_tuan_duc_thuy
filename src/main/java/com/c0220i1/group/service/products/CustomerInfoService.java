@@ -4,4 +4,5 @@ import com.c0220i1.group.model.CustomerInfo;
 
 public interface CustomerInfoService {
     void save(CustomerInfo customerInfo);
+    CustomerInfo findByAccount_Username(String username);
 }

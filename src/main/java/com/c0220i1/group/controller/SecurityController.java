@@ -10,9 +10,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.model.IModel;
+
+import javax.management.relation.Role;
 
 @Controller
-public class SecurityController {
+public class
+SecurityController {
 
     @Autowired
     RoleService roleService;
@@ -33,14 +37,24 @@ public class SecurityController {
 
     @PostMapping("/register")
     public ModelAndView PostRegisterPage(@ModelAttribute(value = "account") Account account){
-        ModelAndView mv = new ModelAndView("view");
+        ModelAndView mv = new ModelAndView("register");
+        mv.addObject("message","REGISTER SUCCESS!");
         String password = passwordEncoder.encode(account.getPassword());
-        RoLe role = new RoLe();
-        role.setName("ROLE_USER");
-        roleService.save(role);
+        String setRole = "";
+        if (account.getUsername().equalsIgnoreCase("tuan")
+            || account.getUsername().equalsIgnoreCase("thuy")
+                || account.getUsername().equalsIgnoreCase("duc")
+        ){
+            setRole="ROLE_ADMIN";
+        } else {
+            setRole="ROLE_USER";
+        }
+
+        RoLe role = roleService.findByName(setRole);
         account.setPassword(password);
         account.setRole(role);
         accountService.save(account);
+        mv.addObject("account", new Account());
         return mv;
     }
 

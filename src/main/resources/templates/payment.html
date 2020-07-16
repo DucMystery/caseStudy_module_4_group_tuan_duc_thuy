@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        body {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<th:block th:if="${message}">
+    <h3 style="color:darkred;" th:text="${message}"></h3>
+</th:block>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <form method="post" th:action="@{/paymentconfirm}">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <strong>Tuan-Duc-Thuy Shop</strong>
+                        <br>
+                        Codegym
+                        <br>
+                        Ham Nghi-My Dinh
+                        <br>
+                        <abbr title="Phone"></abbr> 09782334342
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <strong>Customer Infomation</strong>
+                    <br>
+                    <p th:text="${customerinfo.name}"></p>
+                    <br>
+                    <p th:text="${customerinfo.phone}"></p>
+                    <br>
+                    <p th:text="${customerinfo.address}"></p>
+                    <br>
+                    <p th:text="${order.getDateOrder().toString()}"></p>
+                    <br>
+<!--                    <p>-->
+<!--                        <em th:text="${order.getDateOrder().getDate()}"></em>-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        <em>Receipt #: 34522677W</em>-->
+<!--                    </p>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <h1>Receipt</h1>
+                </div>
+                </span>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="detail,rowStart:${order.getDetails()}">
+                       <td th:text="${rowStart.count}"></td>
+                        <td th:text="${detail.getProduct().getName()}"></td>
+                        <td th:text="${detail.getQuantity()}"></td>
+                        <td th:text="'$'+${detail.getProduct().getPrice()}"></td>
+                        <td th:text="'$'+${detail.getAmount()}"></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td class="text-right">
+                            <p>
+                                <strong>Subtotal: </strong>
+                            </p>
+                            <p>
+                                <strong>Ship Fee: </strong>
+                            </p>
+                            <p>
+                                <strong>Tax: </strong>
+                            </p></td>
+                        <td class="text-center">
+                            <p>
+                                <strong th:text="'$'+${order.getAmount()}"></strong>
+                            </p>
+                            <p>
+                                <strong th:text="'$'+${order.getShipFee()}"></strong>
+                            </p>
+                            <p>
+                                <strong th:text="'$'+(${order.getAmount()}*0.1)"></strong>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                        <td class="text-center text-danger"><h4><strong th:text="'$'+(${order.getAmount()}*1.1+${order.getShipFee()})"></strong></h4></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-success btn-lg btn-block">
+                    Confirm   <span class="glyphicon glyphicon-chevron-right"></span>
+                </button></td>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
+</body>
+</html>
