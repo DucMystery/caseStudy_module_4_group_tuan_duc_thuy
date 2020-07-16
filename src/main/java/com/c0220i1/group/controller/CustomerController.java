@@ -82,4 +82,26 @@ public class CustomerController {
         return modelAndView;
 
     }
+    @GetMapping("/customerform")
+    public ModelAndView customerInfoForm(Principal principal){
+        ModelAndView modelAndView = new ModelAndView("customerinfo");
+        modelAndView.addObject("customerinfo",new CustomerInfo());
+        return modelAndView;
+    }
+    @PostMapping("/save_customer_info")
+    public ModelAndView saveCustomerInfo(@Validated @ModelAttribute("customerinfo") CustomerInfo customerinfo, Principal principal,
+                                         BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            return new ModelAndView("customerinfo");
+        } else {
+            String username = principal.getName();
+            Account account = accountService.findByName(username);
+            customerinfo.setAccount(account);
+            customerInfoService.save(customerinfo);
+            ModelAndView modelAndView = new ModelAndView("redirect:/");
+//            modelAndView.addObject("registersuccess", "You are registration infomation success ");
+            return modelAndView;
+        }
+    }
+
 }

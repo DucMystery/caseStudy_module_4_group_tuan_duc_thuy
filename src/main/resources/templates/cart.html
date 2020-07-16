@@ -70,29 +70,42 @@
             <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
             <nav class="main_nav">
                 <ul class="d-flex flex-row align-items-start justify-content-start">
-                    <li><a href="#">Women</a></li>
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Kids</a></li>
-                    <li><a href="#">Home Deco</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a th:href="@{/category/1}">Women</a></li>
+                    <li><a th:href="@{/category/2}">Men</a></li>
+                    <li><a th:href="@{/category/3}">Kids</a></li>
+                    <li><a th:href="@{/category/4}">Accessories</a></li>
+                    <li><a th:href="@{/category/5}">Shoes</a></li>
+                    <li><a th:href="@{/category/6}">Clothes</a></li>
                 </ul>
             </nav>
             <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
                 <!-- Search -->
                 <div class="header_search">
-                    <form action="#" id="header_search_form">
-                        <input type="text" class="search_input" placeholder="Search Item" required="required">
-                        <button class="header_search_button"><img src="images/search.png" alt=""></button>
+                    <form  id="header_search_form">
+                        <input type="text" class="search_input" placeholder="Search Item" required="required" name="s">
+                        <button class="header_search_button"><img src="../images/search.png" alt=""></button>
                     </form>
                 </div>
                 <!-- User -->
-                <div class="user"><a href="#"><div><img src="images/user.svg" alt="https://www.flaticon.com/authors/freepik"><div>1</div></div></a></div>
+                <div class="user">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div><img src="../images/user.svg" alt="https://www.flaticon.com/authors/freepik"><div th:text="${account.getUsername()}"></div></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                            <a class="dropdown-item" href="/admin">Login With Admin</a>
+                            <a class="dropdown-item" href="/customerform">Customer Infomation Register</a>
+                        </div>
+                </div>
                 <!-- Cart -->
-                <div class="cart"><a href="cart.html"><div><img src="images/cart.svg" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+                <div class="cart active"><a href="./mycart" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div><img src="../images/cart.svg" alt="https://www.flaticon.com/authors/freepik"><div th:text="${total}"></div></div>
+                </a></div>
                 <!-- Phone -->
                 <div class="header_phone d-flex flex-row align-items-center justify-content-start">
-                    <div><div><img src="images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
-                    <div>+1 912-252-7350</div>
+                    <div><div><img src="../images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+                    <div>+84 9669 86688</div>
                 </div>
             </div>
         </div>

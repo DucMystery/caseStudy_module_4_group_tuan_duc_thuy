@@ -33,12 +33,13 @@ import java.util.*;
 
 
     @GetMapping("/mycart")
-    public ModelAndView cartPage(@ModelAttribute("mycart")HashMap<Long,CartLine> mycart){
+    public ModelAndView cartPage(@ModelAttribute("mycart")HashMap<Long,CartLine> mycart,Principal principal){
       ModelAndView modelAndView = new ModelAndView("cart");
       double amount = 0;
       for(CartLine cartLine:mycart.values()){
           amount+=cartLine.getAmount();
       }
+      modelAndView.addObject("account",accountService.findByName(principal.getName()));
       modelAndView.addObject("amount",amount);
       modelAndView.addObject("mycart",mycart);
        return modelAndView;
@@ -131,9 +132,10 @@ import java.util.*;
         }
         orderService.save(order);
         mycart.clear();
-        ModelAndView modelAndView = new ModelAndView("payment");
-        modelAndView.addObject("customerinfo",customerInfo);
-        modelAndView.addObject("order",order);
+        ModelAndView modelAndView = new ModelAndView("alertSuccess");
+        modelAndView.addObject("account",accountService.findByName(principal.getName()));
+//        modelAndView.addObject("customerinfo",customerInfo);
+//        modelAndView.addObject("order",order);
         modelAndView.addObject("message",
                 "You are buy our product success. Please wait 1-2 day for shipment. Thank you so much");
         return modelAndView;

@@ -100,10 +100,11 @@
                             <a class="dropdown-item" href="/register">Register</a>
                             <a class="dropdown-item" href="/logout">Logout</a>
                             <a class="dropdown-item" href="/admin">Login With Admin</a>
+                            <a class="dropdown-item" href="/customerform">Customer Infomation Register</a>
                         </div>
                 </div>
                 <!-- Cart -->
-                <div class="cart"><a href="./mycart"><div><img class="svg" src="../images/cart.svg" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+                <div class="cart"><a th:href="@{/mycart}"><div><img class="svg" src="../images/cart.svg" alt="https://www.flaticon.com/authors/freepik"><div th:text="${total}"></div></div></a></div>
                 <!-- Phone -->
                 <div class="header_phone d-flex flex-row align-items-center justify-content-start">
                     <div><div><img src="../images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
