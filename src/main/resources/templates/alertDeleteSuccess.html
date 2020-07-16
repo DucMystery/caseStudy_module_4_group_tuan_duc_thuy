@@ -83,8 +83,8 @@
             <nav class="main_nav">
                 <ul class="d-flex flex-row align-items-start justify-content-start">
                     <li><a href="/create-product">Create Product</a></li>
-                    <li class="active"><a href="/showList" >Edit Or Delete Product</a></li>
-                    <li><a href="/categories" >Edit Or Delete Category</a></li>
+                    <li><a href="/showList" >Edit Or Delete Product</a></li>
+                    <li class="active"><a href="/categories" >Edit Or Delete Category</a></li>
                     <li><a href="/create-category" >Create Category</a></li>
                 </ul>
             </nav>
@@ -126,54 +126,13 @@
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3">
                         <div class="section_title text-center">
-                            Delete Product</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Product -->
                 <div class="container">
-                    <form th:action="@{/delete-product}" method="post" th:object="${product}" class="form-control">
-                        <input type="hidden" name="id" th:field="*{id}">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <td>Name :</td>
-                                <td>
-                                    <span th:text="${product.name}"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Price :</td>
-                                <td><span th:text="${product.price}"></span></td>
-                            </tr>
-                            <tr>
-                                <td>Quantity :</td>
-                                <td><span th:text="${product.quantity}"></span></td>
-                            </tr>
-                            <tr>
-                                <td>Image  :</td>
-                                <td><span th:text="${product.image}"></span></td>
-                            </tr>
-                            <tr>
-                                <td>Evaluate :</td>
-                                <td><span th:text="${product.evaluate}"></span></td>
-                            </tr>
-                            <tr>
-                                <td>Category :</td>
-                                <td>
-                                    <th:block th:each="c:${product.getCategorySet()}">
-                                        <span th:text="${c.name}"></span>
-                                    </th:block>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center">
-                                    <input type="submit" value="Delete">
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-
-
+                    <h2 th:text="${message}" th:if="${message}"></h2>
                 </div>
             </div>
         </div>

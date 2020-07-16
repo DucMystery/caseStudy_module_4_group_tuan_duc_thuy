@@ -41,8 +41,15 @@ public class CustomerController {
     private HttpSession httpSession;
 
     @GetMapping("/")
-    public String viewPage(@RequestParam("s")Optional<String>s, @PageableDefault(size = 9) Pageable pageable, Model model){
+    public String viewPage(@RequestParam("s")Optional<String>s, @PageableDefault(size = 9) Pageable pageable, Model model, Principal principal){
         Page<Product> products;
+        if(principal!= null){
+            Account account = accountService.findByName(principal.getName());
+            model.addAttribute("account", account);
+        }else {
+            Account account = new Account();
+            model.addAttribute("account",account);
+        }
         if (s.isPresent()){
             products =productService.findAllByNameContaining(s.get(),pageable);
         }else {
@@ -73,30 +80,6 @@ public class CustomerController {
         modelAndView.addObject("id",id);
 
         return modelAndView;
-    }
-
-    @GetMapping("/customerform")
-    public ModelAndView customerInfoForm(Principal principal){
-        ModelAndView modelAndView = new ModelAndView("customerinfo");
-        modelAndView.addObject("customerinfo",new CustomerInfo());
-        return modelAndView;
-    }
-    @PostMapping("/save_customer_info")
-    public ModelAndView saveCustomerInfo(@Validated @ModelAttribute("customerinfo") CustomerInfo customerinfo, Principal principal,
-                                         BindingResult bindingResult){
-        if(bindingResult.hasFieldErrors()){
-            return new ModelAndView("customerinfo");
-        } else {
-            String username = principal.getName();
-            Account account = accountService.findByName(username);
-            customerinfo.setAccount(account);
-            customerInfoService.save(customerinfo);
-            ModelAndView modelAndView= new ModelAndView("customerinfo");
-            modelAndView.addObject("registersuccess","You are registration infomation success ");
-            return modelAndView;
-        }
-
-
 
     }
 }
